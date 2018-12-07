@@ -1,0 +1,13 @@
+{
+	"routes": [
+		{
+			"path": "/V3/Northwind/Northwind.svc/",
+			"target": {
+				"type": "destination",
+				"name": "northwind",
+				"entryPath": "/V3/Northwind"
+			},
+			"description": "Northwind Destination"
+		}
+	]
+}
