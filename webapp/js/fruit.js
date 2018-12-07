@@ -8,11 +8,14 @@ var fruit = {
 	suppliers: [{
 		supplierName: "Trade SE"
 	}, {
-		supplierName: "Another SE"
+		supplierName: "Another SE",
+		"city": "Moscow"
 	}]
 };
 
-showData(fruit);
+//showData(fruit.suppliers[1]);
+
+//showData(fruit);
 
 /**
  * This is JSDoc comment

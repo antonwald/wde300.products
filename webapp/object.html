@@ -36,12 +36,17 @@
         	this.name = sName;
         }
         
+
+        var oAnton = new Employee("Anton");
+        var oMario = new Employee("Mario");
+        
         Employee.prototype.sayHello = function(){
         	console.log("Hallo, " + this.name);
         }
         
-        var oAnton = new Employee("Anton");
-        var oMario = new Employee("Mario");
+        oAnton.sayHello = function(){
+        	console.log("Overwritten");
+        }
         
         oAnton.sayHello();
         oMario.sayHello();

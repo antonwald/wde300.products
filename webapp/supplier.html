@@ -3,7 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <title>JavaScript - DOM Manipulation</title>
-         <script src="js/supplier.js"></script>
+        <script src="lib/jquery-1.6.4.js"></script>
+        <script src="js/supplier.js"></script>
          <style>
 			table {
 			  width:100%;
@@ -36,7 +37,7 @@
     	<button onclick="AppController.showData();">Display supplier products</button>
 		 <table id="table">
 			  <caption>Products</caption>
-			  <tr>
+			  <tr id="header">
 			    <th>Product Name</th>
 			    <th>Price</th>
 			    <th>Units in stock</th>

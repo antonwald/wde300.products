@@ -5,7 +5,7 @@
 			"target": {
 				"type": "destination",
 				"name": "northwind",
-				"entryPath": "/V3/Northwind"
+				"entryPath": "/V3/Northwind/Northwind.svc/"
 			},
 			"description": "Northwind Destination"
 		}

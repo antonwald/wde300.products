@@ -1,52 +1,3 @@
-var supplier = {
-	"SupplierID": 1,
-	"CompanyName": "Exotic Liquids",
-	"ContactName": "Charlotte Cooper",
-	"ContactTitle": "Purchasing Manager",
-	"Address": "49 Gilbert St.",
-	"City": "London",
-	"Region": null,
-	"PostalCode": "EC1 4SD",
-	"Country": "UK",
-	"Phone": "(171) 555-2222",
-	"Fax": null,
-	"HomePage": null,
-	"Products": [{
-		"ProductID": 1,
-		"ProductName": "Chai",
-		"SupplierID": 1,
-		"CategoryID": 1,
-		"QuantityPerUnit": "10 boxes x 20 bags",
-		"UnitPrice": "18.0000",
-		"UnitsInStock": 39,
-		"UnitsOnOrder": 0,
-		"ReorderLevel": 10,
-		"Discontinued": false
-	}, {
-		"ProductID": 2,
-		"ProductName": "Chang",
-		"SupplierID": 1,
-		"CategoryID": 1,
-		"QuantityPerUnit": "24 - 12 oz bottles",
-		"UnitPrice": "19.0000",
-		"UnitsInStock": 17,
-		"UnitsOnOrder": 40,
-		"ReorderLevel": 25,
-		"Discontinued": false
-	}, {
-		"ProductID": 3,
-		"ProductName": "Aniseed Syrup",
-		"SupplierID": 1,
-		"CategoryID": 2,
-		"QuantityPerUnit": "12 - 550 ml bottles",
-		"UnitPrice": "10.0000",
-		"UnitsInStock": 13,
-		"UnitsOnOrder": 70,
-		"ReorderLevel": 25,
-		"Discontinued": false
-	}]
-};
-
 var AppController = {
 
 	/**
@@ -55,11 +6,46 @@ var AppController = {
 	 */
 	showData: function () {
 
-		for (var i = 0; i < supplier.Products.length; i++) {
-			this._createTableRow(supplier.Products[i].ProductName, supplier.Products[i].UnitPrice, supplier.Products[i].UnitsInStock);
-		}
+		var sUrl = "/V3/Northwind/Northwind.svc/Suppliers(2)?$expand=Products&$format=json";
+		jQuery.getJSON(sUrl, function (supplier) {
+			jQuery("#table tr").not("#header").remove();
+			for (var i = 0; i < supplier.Products.length; i++) {
+				this._createTableRow(supplier.Products[i].ProductName, supplier.Products[i].UnitPrice, supplier.Products[i].UnitsInStock);
+			}
+		}.bind(this));
+
+		/*
+				// Load data from file data/supplier.json
+				var request = new XMLHttpRequest();
+		        
+				request.onreadystatechange = function () {
+					if (request.readyState === 4) {
+						
+						jQuery("#table tr").not("#header").remove();
+						
+						var supplier = JSON.parse(request.responseText);
+						for (var i = 0; i < supplier.Products.length; i++) {
+							this._createTableRow(supplier.Products[i].ProductName, supplier.Products[i].UnitPrice, supplier.Products[i].UnitsInStock);
+						}
+					}
+				}.bind(this);
+
+				request.open("GET", "/V3/Northwind/Northwind.svc/Suppliers(2)?$expand=Products&$format=json", true);
+				request.send(null);
+		*/
 
 	},
+
+	/*	showData: function () {
+
+			jQuery.getJSON('data/supplier.json', function (supplier) {
+				jQuery("#table tr").not(document.getElementById("header")).empty();
+				for (var i = 0; i < supplier.Products.length; i++) {
+					this._createTableRow(supplier.Products[i].ProductName, supplier.Products[i].UnitPrice, supplier.Products[i].UnitsInStock);
+				}
+			}.bind(this));
+
+		},*/
 
 	/**
 	 * This is JSDoc comment
@@ -96,5 +82,13 @@ var AppController = {
 
 		return el;
 	}
+
+};
+
+AppController._anotherMethod = function () {
+
+};
+
+AppController._secondMethod = function () {
 
 };
