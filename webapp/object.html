@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>JavaScript Object</title>
+    </head>
+    <body>
+        <script>
+        // Single Object
+        var oEmptyObject = {};
+        
+        // Object
+        var oEmployee1 = {
+        	name : "Anton",
+        	sayHello: function(){
+        		console.log("Hallo, " + this.name);
+        	}
+        };
+ 
+        oEmployee1.sayHello();
+        
+        // Object
+        var oEmployee2 = {
+        	name : "Mario",
+        	sayHello: function(){
+        		console.log("Hallo, " + this.name);
+        	}
+        };
+        
+        oEmployee2.sayHello();
+        
+        // JavaScript Prototypes
+        
+        // Create prototype to create several objects out of it
+        function Employee(sName){
+        	this.name = sName;
+        }
+        
+        Employee.prototype.sayHello = function(){
+        	console.log("Hallo, " + this.name);
+        }
+        
+        var oAnton = new Employee("Anton");
+        var oMario = new Employee("Mario");
+        
+        oAnton.sayHello();
+        oMario.sayHello();
+        
+        </script>
+    </body>
+</html>
